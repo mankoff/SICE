@@ -75,10 +75,12 @@ EOF
       rm -fR ${tmpdir}
       cd ${_cwd}
     fi
+    
+    cd ${SEN3_source}; rm ${SEN3_source}/${year}/${date}
+    cd ${proc_root}; rm ${proc_root}/${date}
 
   done
 done
 
 
-rm -fR ${SEN3_source}/*
-rm -fR ${proc_root}/*
+

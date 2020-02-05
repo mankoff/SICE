@@ -78,3 +78,7 @@ EOF
 
   done
 done
+
+
+rm -fR ${SEN3_source}/*
+rm -fR ${proc_root}/*

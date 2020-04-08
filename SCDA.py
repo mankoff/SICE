@@ -17,8 +17,6 @@ of the algorithm.
 INPUTS:
     inpath: Path to the folder of a given date containing extracted scenes
                 in .tif format. [string]
-    multi_proc: run functions by multiprocessing using the nb_cores available
-                to drastically decrease computation time.
             
 OUTPUTS:
         {inpath}/NDSI.tif: Normalized Difference Snow Index (NDSI) in a 
@@ -37,8 +35,6 @@ import rasterio
 import argparse
 import os
 import time
-import multiprocessing
-from multiprocessing import Pool
 
 parser = argparse.ArgumentParser()
 parser.add_argument('inpath')

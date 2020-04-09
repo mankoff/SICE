@@ -137,8 +137,7 @@ def SCDA_v20(R550, R16, BT37, BT11, BT12, profile, scene,
     cloud_detection[cloud_detection==False]=t6[cloud_detection==False]
     
     if SICE_toolchain:
-        cloud_detection[cloud_detection==True]=255
-        cloud_detection[cloud_detection==False]=1
+        cloud_detection = np.where(cloud_detection==True, 255.0, 1.0)
     
     #writing results
     profile_cloud_detection=profile.copy()

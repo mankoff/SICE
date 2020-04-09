@@ -23,8 +23,6 @@ OUTPUTS:
                            .tif file, stored in {inpath}. [.tif]
         {inpath}/SCDA_v20.tif: Simple Cloud Detection Algorithm (SCDA) v2.0
                                results in a .tif file, stored in {inpath}. [.tif]
-        {inpath}/SCDA_v14.tif: Simple Cloud Detection Algorithm (SCDA) v1.4
-                               results in a .tif file, stored in {inpath}. [.tif]
     
 
 """

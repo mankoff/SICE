@@ -23,7 +23,8 @@ OUTPUTS:
                            .tif file, stored in {inpath}. [.tif]
         {inpath}/SCDA_v20.tif: Simple Cloud Detection Algorithm (SCDA) v2.0
                                results in a .tif file, stored in {inpath}. [.tif]
-    
+        {inpath}/SCDA_v14.tif: Simple Cloud Detection Algorithm (SCDA) v1.4
+                               results in a .tif file, stored in {inpath}. [.tif]
 
 """
 
@@ -148,7 +149,7 @@ def SCDA_v20(R550, R16, BT37, BT11, BT12, profile, scene,
 
     with rasterio.open(inpath+os.sep+scene+os.sep+'SCDA_v20.tif','w',**profile_cloud_detection) as dst:
         dst.write(cloud_detection.astype(np.uint8), 1)
-    
+        
     return cloud_detection, NDSI
 
 
@@ -174,3 +175,4 @@ for i,scene in enumerate(scenes):
 
     #running SCDA v2.0 and v1.4
     cd,NDSI=SCDA_v20(R550=R550,R16=R16,BT37=BT37,BT11=BT11,BT12=BT12,scene=scene,profile=profile)
+    

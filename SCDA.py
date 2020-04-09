@@ -144,9 +144,13 @@ def SCDA_v20(R550, R16, BT37, BT11, BT12, profile, scene,
     
     #writing results
     profile_cloud_detection=profile.copy()
-    profile_cloud_detection.update(dtype=rasterio.int16)
+    if SICE_toolchain:
+        profile_cloud_detection.update(dtype=rasterio.uint8, nodata=255)
+    else:
+        profile_cloud_detection.update(dtype=rasterio.uint8)
+
     with rasterio.open(inpath+os.sep+scene+os.sep+'SCDA_v20.tif','w',**profile_cloud_detection) as dst:
-        dst.write(cloud_detection.astype(np.int16), 1)
+        dst.write(cloud_detection.astype(np.uint8), 1)
     
     return cloud_detection, NDSI
 

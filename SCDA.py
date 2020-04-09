@@ -53,8 +53,8 @@ def radiometric_calibration(R16,scene,inpath=args.inpath):
         scene: Scene on which to compute SCDA. [string]
         
     OUTPUTS:
-        {inpath}/S5_reflectance_an_rc.tif: Adjusted Top of Atmosphere (TOA)
-                                             reflectance for channel S5.
+        {inpath}/r_TOA_S5_rc.tif: Adjusted Top of Atmosphere (TOA)
+                                  reflectance for channel S5.
     '''
     
     profile_R16=R16.profile
@@ -62,7 +62,7 @@ def radiometric_calibration(R16,scene,inpath=args.inpath):
     R16_data=R16.read(1)
     R16_rc=R16_data*factor
     
-    with rasterio.open(inpath+os.sep+scene+os.sep+'S5_reflectance_an_rc.tif','w',**profile_R16) as dst:
+    with rasterio.open(inpath+os.sep+scene+os.sep+'r_TOA_S5_rc.tif','w',**profile_R16) as dst:
         dst.write(R16_rc, 1)
     
     
@@ -160,18 +160,18 @@ scenes=os.listdir(args.inpath)
 for i,scene in enumerate(scenes):
 
     #saving profile metadata only for the first iteration
-    profile=rasterio.open(args.inpath+os.sep+scene+os.sep+'S1_reflectance_an.tif').profile
+    profile=rasterio.open(args.inpath+os.sep+scene+os.sep+'r_TOA_S1.tif').profile
 
     #calibrating R16
-    R16=rasterio.open(args.inpath+os.sep+scene+os.sep+'S5_reflectance_an.tif')
+    R16=rasterio.open(args.inpath+os.sep+scene+os.sep+'r_TOA_S5.tif')
     radiometric_calibration(R16=R16,scene=scene)
 
     #loading inputs
-    R550=rasterio.open(args.inpath+os.sep+scene+os.sep+'S1_reflectance_an.tif').read(1)
-    R16=rasterio.open(args.inpath+os.sep+scene+os.sep+'S5_reflectance_an_rc.tif').read(1)
-    BT37=rasterio.open(args.inpath+os.sep+scene+os.sep+'S7_BT_an.tif').read(1)
-    BT11=rasterio.open(args.inpath+os.sep+scene+os.sep+'S8_BT_an.tif').read(1)
-    BT12=rasterio.open(args.inpath+os.sep+scene+os.sep+'S9_BT_an.tif').read(1)
+    R550=rasterio.open(args.inpath+os.sep+scene+os.sep+'r_TOA_S1.tif').read(1)
+    R16=rasterio.open(args.inpath+os.sep+scene+os.sep+'r_TOA_S5_rc.tif').read(1)
+    BT37=rasterio.open(args.inpath+os.sep+scene+os.sep+'BT_S7.tif').read(1)
+    BT11=rasterio.open(args.inpath+os.sep+scene+os.sep+'BT_S8.tif').read(1)
+    BT12=rasterio.open(args.inpath+os.sep+scene+os.sep+'BT_S9.tif').read(1)
 
     #running SCDA v2.0 and v1.4
     cd,NDSI=SCDA_v20(R550=R550,R16=R16,BT37=BT37,BT11=BT11,BT12=BT12,scene=scene,profile=profile)

@@ -501,7 +501,7 @@
   <node id="Write_01">
     <operator>Write</operator>
     <sources><sourceProduct>BandSelect_01</sourceProduct></sources>
-    <parameters><file>${targetFolder}/S1_reflectance_an_x.tif</file><formatName>GeoTIFF</formatName></parameters>
+    <parameters><file>${targetFolder}/S1_reflectance_an.tif</file><formatName>GeoTIFF</formatName></parameters>
   </node>
 
   <node id="BandSelect_05">
@@ -517,7 +517,7 @@
   <node id="Write_05">
     <operator>Write</operator>
     <sources><sourceProduct>BandSelect_05</sourceProduct></sources>
-    <parameters><file>${targetFolder}/S5_reflectance_an_x.tif</file><formatName>GeoTIFF</formatName></parameters>
+    <parameters><file>${targetFolder}/S5_reflectance_an.tif</file><formatName>GeoTIFF</formatName></parameters>
   </node>
 
   <node id="BandSelect_07">
@@ -533,7 +533,7 @@
   <node id="Write_07">
     <operator>Write</operator>
     <sources><sourceProduct>BandSelect_07</sourceProduct></sources>
-    <parameters><file>${targetFolder}/S7_BT_an_x.tif</file><formatName>GeoTIFF</formatName></parameters>
+    <parameters><file>${targetFolder}/S7_BT_an.tif</file><formatName>GeoTIFF</formatName></parameters>
   </node>
 
   <node id="BandSelect_08">
@@ -549,7 +549,7 @@
   <node id="Write_08">
     <operator>Write</operator>
     <sources><sourceProduct>BandSelect_08</sourceProduct></sources>
-    <parameters><file>${targetFolder}/S8_BT_an_x.tif</file><formatName>GeoTIFF</formatName></parameters>
+    <parameters><file>${targetFolder}/S8_BT_an.tif</file><formatName>GeoTIFF</formatName></parameters>
   </node>
 
   <node id="BandSelect_09">
@@ -565,7 +565,7 @@
   <node id="Write_09">
     <operator>Write</operator>
     <sources><sourceProduct>BandSelect_09</sourceProduct></sources>
-    <parameters><file>${targetFolder}/S9_BT_an_x.tif</file><formatName>GeoTIFF</formatName></parameters>
+    <parameters><file>${targetFolder}/S9_BT_an.tif</file><formatName>GeoTIFF</formatName></parameters>
   </node>
 
 </graph>

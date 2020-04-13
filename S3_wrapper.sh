@@ -32,6 +32,8 @@ LD_LIBRARY_PATH=. # SNAP requirement
 years=(2018 2019)
 doys=(74 274)
 
+sicepy_multiprocessing=true
+
 for year in "${years[@]}"; do
     for doy in $(seq -w ${days[0]} ${days[1]}); do
 
@@ -62,9 +64,15 @@ for year in "${years[@]}"; do
     
     # Mosaic
     ./dm.sh ${date} ${proc_root}/${date} ${mosaic_root}
-
-    # SICE
-    python ./sice.py ${mosaic_root}/${date}
+    
+    if [ "$sicepy_multiprocessing" = false ]; then
+        # SICE
+        python ./sice.py ${mosaic_root}/${date}
+    fi
     
   done
 done
+
+if [ "$sicepy_multiprocessing" = false ]; then
+    # SICE
+    python ./sicepy_multiprocessing.py ${mosaic_root} ${years} ${doys}

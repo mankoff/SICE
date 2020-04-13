@@ -29,8 +29,11 @@ set -o pipefail
 
 LD_LIBRARY_PATH=. # SNAP requirement
 
-for year in 2018 2019; do
-  for doy in $(seq -w 74 274); do
+years=(2018 2019)
+doys=(74 274)
+
+for year in "${years[@]}"; do
+    for doy in $(seq -w ${days[0]} ${days[1]}); do
 
 ### DEBUG
 # for year in 2018; do

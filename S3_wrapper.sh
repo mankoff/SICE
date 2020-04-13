@@ -73,6 +73,6 @@ for year in "${years[@]}"; do
   done
 done
 
-if [ "$sicepy_multiprocessing" = false ]; then
+if [ "$sicepy_multiprocessing" = true ]; then
     # SICE
-    python ./sicepy_multiprocessing.py ${mosaic_root} ${years} ${doys}
+    python ./sicepy_multiprocessing.py ${mosaic_root} "${doys[@]}" "${years[@]}"

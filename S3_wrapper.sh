@@ -76,3 +76,4 @@ done
 if [ "$sicepy_multiprocessing" = true ]; then
     # SICE
     python ./sicepy_multiprocessing.py ${mosaic_root} "${doys[@]}" "${years[@]}"
+fi

@@ -35,7 +35,7 @@ doys=(74 274)
 sicepy_multiprocessing=true
 
 for year in "${years[@]}"; do
-    for doy in $(seq -w ${days[0]} ${days[1]}); do
+    for doy in $(seq -w ${doys[0]} ${doys[1]}); do
 
 ### DEBUG
 # for year in 2018; do
@@ -51,7 +51,7 @@ for year in "${years[@]}"; do
     ### Fetch one day of OLCI & SLSTR scenes over Greenland
     ## Use local files (PTEP, DIAS, etc.)
     ./dhusget_wrapper.sh -d ${date} -l ${SEN3_local} -o ${SEN3_source}/${year}/${date} \
-    			 -f Svalbard -u <user> -p <password>
+    			 -u <user> -p <password>
     ## Download files
     # ./dhusget_wrapper.sh -d ${date} -o ${SEN3_source}/${year}/${date} \
     # 			 -f Svalbard -u <user> -p <password>

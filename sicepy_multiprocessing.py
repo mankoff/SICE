@@ -10,9 +10,13 @@ different years otherwise.
 """
 
 import os
+import sys
+import subprocess
+import numpy as np
 import multiprocessing
 from multiprocessing import Pool
-import sys
+
+nb_cores=multiprocessing.cpu_count()
 
 mosaic_root=(sys.argv)[1]
 doys_years=(sys.argv)[2:]
@@ -21,8 +25,6 @@ doys=[]
 [doys.append(np.int(i)) for i in doys_years if len(i)==3]
 years=[]
 [years.append(np.int(i)) for i in doys_years if len(i)==4]
-
-nb_cores=multiprocessing.cpu_count()
 
 
 def sicepy_multiprocessing(k):
@@ -34,14 +36,14 @@ def sicepy_multiprocessing(k):
         date=subprocess.Popen('$(date -d "${'+year+'}-01-01 +$(( 10#${'+doys[k]+'}-1 ))\
                               days" "+%Y-%m-%d")')
                               
-    os.system('./sice.py ${'+args.mosaic_root+'}/${'+date+'}')
+    os.system('./sice.py ${'+mosaic_root+'}/${'+date+'}')
     
 if len(doys)==0: 
     
     doy=doys[0]
-        if __name__ == '__main__':
-            with Pool(nb_cores) as p:
-                p.map(sicepy_multiprocessing, list(years)) 
+    if __name__ == '__main__':
+        with Pool(nb_cores) as p:
+            p.map(sicepy_multiprocessing, list(years)) 
                 
 else:
     

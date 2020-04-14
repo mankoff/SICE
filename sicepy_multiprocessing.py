@@ -13,8 +13,8 @@ given days are run.
 
 import os
 import sys
-import subprocess
 import numpy as np
+import subprocess
 import multiprocessing
 from multiprocessing import Pool
 
@@ -32,22 +32,24 @@ years=[]
 def sicepy_multiprocessing(k):
     
     if len(doys)==1:
-        date=subprocess.Popen('$(date -d "${'+years[k]+'}-01-01 +$(( 10#${'+doy+'}-1 ))\
-                              days" "+%Y-%m-%d")')
+        date=subprocess.check_output('date -d "'+str(years[k])+'-01-01 +$(('+str(doy)+'-1 ))\
+                                              days" "+%Y-%m-%d"', shell=True)
     else:
-        date=subprocess.Popen('$(date -d "${'+year+'}-01-01 +$(( 10#${'+dates[k]+'}-1 ))\
-                              days" "+%Y-%m-%d")')
-                              
-    os.system('./sice.py ${'+mosaic_root+'}/${'+date+'}')
+        date=subprocess.check_output('date -d "'+str(year)+'-01-01 +$(('+str(dates[k])+'-1 ))\
+                                              days" "+%Y-%m-%d"', shell=True)
+
+    os.system('./sice.py '+mosaic_root+'/'+date.decode("utf-8"))
 
 
 # one day: multiprocessing over years
 if len(doys)==1: 
     
     doy=doys[0]
+    it=len(years)
+    
     if __name__ == '__main__':
         with Pool(nb_cores) as p:
-            p.map(sicepy_multiprocessing, years) 
+            p.map(sicepy_multiprocessing, np.arange(0,it)) 
 
 
 else:
@@ -55,12 +57,14 @@ else:
     # two days: multiprocessing over days from day1 to day2.
     if len(doys)==2:
         dates=list(range(doys[0],doys[1]+1))
+        it=len(dates)
         
     # more than two days: multiprocessing over days for the given dates.  
     elif len(doys)>2:
         dates=doys
+        it=len(dates)
         
     for year in years:
         if __name__ == '__main__':
             with Pool(nb_cores) as p:
-                p.map(sicepy_multiprocessing, dates)   
+                p.map(sicepy_multiprocessing, np.arange(0,it))   

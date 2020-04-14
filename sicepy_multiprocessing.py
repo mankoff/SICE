@@ -37,17 +37,27 @@ def sicepy_multiprocessing(k):
                               days" "+%Y-%m-%d")')
                               
     os.system('./sice.py ${'+mosaic_root+'}/${'+date+'}')
-    
+
+# one day: multiprocessing over years
 if len(doys)==1: 
     
     doy=doys[0]
     if __name__ == '__main__':
         with Pool(nb_cores) as p:
-            p.map(sicepy_multiprocessing, list(years)) 
-                
-else:
+            p.map(sicepy_multiprocessing, years) 
+
+# two days: multiprocessing over days from day1 to day2.
+elif len(doys)==2:
     
     for year in years:
         if __name__ == '__main__':
             with Pool(nb_cores) as p:
-                p.map(sicepy_multiprocessing, list(range(doys[0],doys[1])))
+                p.map(sicepy_multiprocessing, list(range(doys[0],doys[1])))   
+
+# more than two days: multiprocessing over days for selected dates.  
+elif len(doys)>2:
+    
+    for year in years:
+        if __name__ == '__main__':
+            with Pool(nb_cores) as p:
+                p.map(sicepy_multiprocessing, doys)

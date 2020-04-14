@@ -13,8 +13,8 @@ given days are run.
 
 import os
 import sys
-import numpy as np
 import subprocess
+import numpy as np
 import multiprocessing
 from multiprocessing import Pool
 
@@ -45,11 +45,11 @@ def sicepy_multiprocessing(k):
 if len(doys)==1: 
     
     doy=doys[0]
-    it=len(years)
+    op=len(years)
     
     if __name__ == '__main__':
         with Pool(nb_cores) as p:
-            p.map(sicepy_multiprocessing, np.arange(0,it)) 
+            p.map(sicepy_multiprocessing, np.arange(0,op)) 
 
 
 else:
@@ -57,14 +57,14 @@ else:
     # two days: multiprocessing over days from day1 to day2.
     if len(doys)==2:
         dates=list(range(doys[0],doys[1]+1))
-        it=len(dates)
+        op=len(dates)
         
     # more than two days: multiprocessing over days for the given dates.  
     elif len(doys)>2:
         dates=doys
-        it=len(dates)
+        op=len(dates)
         
     for year in years:
         if __name__ == '__main__':
             with Pool(nb_cores) as p:
-                p.map(sicepy_multiprocessing, np.arange(0,it))   
+                p.map(sicepy_multiprocessing, np.arange(0,op))   

@@ -38,7 +38,7 @@ def sicepy_multiprocessing(k):
                               
     os.system('./sice.py ${'+mosaic_root+'}/${'+date+'}')
     
-if len(doys)==0: 
+if len(doys)==1: 
     
     doy=doys[0]
     if __name__ == '__main__':

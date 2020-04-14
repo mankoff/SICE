@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # pySICEv1.1
 # 
 # from FORTRAN VERSION 3.4

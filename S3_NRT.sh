@@ -62,7 +62,7 @@ for region in "${regions[@]}"; do
   ### Fetch one day of OLCI & SLSTR scenes over Greenland
   ## Use local files (PTEP, DIAS, etc.)
   ./dhusget_wrapper.sh -d ${date} -l ${SEN3_local} -o ${SEN3_source}/${year}/${date} \
-                     -f ${region} -u <user> -p <password>
+                       -f ${region} -u <user> -p <password>
 
   # SNAP: Reproject, calculate reflectance, extract bands, etc.
   ./S3_proc.sh -i ${SEN3_source}/${year}/${date} -o ${proc_root}/${date} -X S3.xml -t

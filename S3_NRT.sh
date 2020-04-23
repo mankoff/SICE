@@ -9,7 +9,7 @@
 # use SNAP gpt
 export PATH=/srv/home/8675309/local/snap/bin:${PATH}
 
-# activate SICE conda virtual environment
+# activate SICE anaconda virtual environment
 . /srv/home/8675309/local/anaconda/envs/SICE/bin/activate
 
 set -o errexit

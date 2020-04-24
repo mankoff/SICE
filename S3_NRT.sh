@@ -35,9 +35,7 @@ LD_LIBRARY_PATH=. # SNAP requirement
 date=$(date -d '-2days' "+%Y-%m-%d")
 year=$(date "+%Y")
 
-
 declare -a regions=("Greenland" "Iceland" "Svalbard" "NovayaZemlya" "SevernayaZemlya" "FransJosefLand" "NorthernArcticCanada" "SouthernArcticCanada" "JanMayen" "Norway" "Beaufort")
-
 
 for region in "${regions[@]}"; do
 

@@ -45,7 +45,7 @@ for region in "${regions[@]}"; do
   proc_root=/sice-data/SICE/${region}/proc
   mosaic_root=/sice-data/SICE/${region}/mosaic
 
-  mkdir /sice-data/ASICE/${region}
+  mkdir -p /sice-data/SICE/${region}
 
   ### Fetch one day of OLCI & SLSTR scenes over Greenland
   ## Use local files (PTEP, DIAS, etc.)

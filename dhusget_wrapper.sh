@@ -17,7 +17,7 @@ print_usage() {
        "[dhusget.sh options]"
   echo ""
   echo "  -d|--date YYYY-MM-DD or YYY-DOY"
-  echo "  [-f|--footprint Greenland|Iceland|Svalbard|NovayaZemlya|SevernayaZemlya|FransJosefLand|NorthernArcticCanada (Devon Island included)|SouthernArcticCanada|JanMayen|Norway|Beaufort (sea ice) [DEFAULT: Greenland]|AlaskaYukon [ELSE: footprint coordinates (.geojson, .csv: decimal long/lat]]"
+  echo "  [-f|--footprint Greenland|Iceland|Svalbard|NovayaZemlya|SevernayaZemlya|FransJosefLand|NorthernArcticCanada (Devon Island included)|SouthernArcticCanada|JanMayen|Norway|Beaufort (sea ice)|AlaskaYukon  [DEFAULT: Greenland] [ELSE: footprint coordinates (.geojson, .csv: decimal lon/lat]]"
   echo "  [-l|--local /path/to/Sentinel-3 (e.g. /o3data/Sentinel-3)]"
   echo "  [           {SLSTR,OLCI}/YYYY/MM/DD subfolders required]"
   echo "  -o|--output-folder /path/to/folder"

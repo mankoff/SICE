@@ -91,6 +91,7 @@ n_imgs=$(echo $sza_lut_idxs |wc -w)
 # generate a raster of nulls that we can then patch into
 log_info "Initializing mosaic scenes..."
 parallel -j 1 "r.mapcalc \"{} = null()\" --o --q" ::: ${bands_CM}
+parallel -j 1 "r.mapcalc \"{} = null()\" --o --q" ::: ${bands}
 
 ### REFERENCE LOOP VERSION
 # Patch each BAND based on the minimum SZA_LUT

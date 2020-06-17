@@ -106,24 +106,18 @@ parallel -j 1 "r.mapcalc \"{} = null()\" --o --q" ::: ${bands}
 
 # PARALLEL?
 log_info "Patching bands based on minmum SZA_LUT"
-doit_CM() {
-  local idx=$1
-  local band=$2
-  local b_arr=($(g.list type=raster pattern=${band} mapset=* | grep "@.*T"))
-  r.mapcalc "${band} = if((sza_lut_CM == ${idx}), ${b_arr[${idx}]}, ${band})" --o --q
-}
-export -f doit_CM
 
 doit() {
-  local idx=$1
-  local band=$2
+  local sza_lut=$1
+  local idx=$2
+  local band=$3
   local b_arr=($(g.list type=raster pattern=${band} mapset=* | grep "@.*T"))
-  r.mapcalc "${band} = if((sza_lut == ${idx}), ${b_arr[${idx}]}, ${band})" --o --q
+  r.mapcalc "${band} = if((${sza_lut} == ${idx}), ${b_arr[${idx}]}, ${band})" --o --q
 }
 export -f doit
 
-parallel -j 1 doit_CM {1} {2} ::: ${sza_lut_idxs_CM} ::: ${bands_CM}
-parallel -j 1 doit {1} {2} ::: ${sza_lut_idxs} ::: ${bands}
+parallel -j 1 doit {1} {2} ::: ${sza_lut_CM} ::: ${sza_lut_idxs_CM} ::: ${bands_CM}
+parallel -j 1 doit {1} {2} ::: ${sza_lut} ::: ${sza_lut_idxs} ::: ${bands}
 
 # diagnostics
 r.series input=${sza_list_CM} method=count output=num_scenes_cloudfree --q

@@ -116,8 +116,8 @@ doit() {
 }
 export -f doit
 
-parallel -j 1 doit {1} {2} ::: sza_lut_CM ::: ${sza_lut_idxs_CM} ::: ${bands_CM}
-parallel -j 1 doit {1} {2} ::: sza_lut ::: ${sza_lut_idxs} ::: ${bands}
+parallel -j 1 doit {1} {2} {3} ::: sza_lut_CM ::: ${sza_lut_idxs_CM} ::: ${bands_CM}
+parallel -j 1 doit {1} {2} {3} ::: sza_lut ::: ${sza_lut_idxs} ::: ${bands}
 
 # diagnostics
 r.series input=${sza_list_CM} method=count output=num_scenes_cloudfree --q

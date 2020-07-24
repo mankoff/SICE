@@ -40,10 +40,6 @@ In more detail:
 + Inputs: OLCI and SLSTR scenes
 + Outputs: A folder OLCI timestamp
 
-** pySICE
-
-+ Run [[./sice.py]] passing in one of the folders generated in the previous step.
-+ *WARNING*: This step is slow, and may take > 24 hours.
 
 ** Mosaic
 
@@ -51,6 +47,10 @@ In more detail:
   + Combine all the files from to form a mosaic
   + Mask out clouds, then...
   + When scenes overlap, use minimum SZA
+
+** pySICE
+
++ Run [[./sice.py]] passing in one of the folders generated in the previous step.
 
 ** Outputs
 | File Name                     | Description                                                            | Units       |
